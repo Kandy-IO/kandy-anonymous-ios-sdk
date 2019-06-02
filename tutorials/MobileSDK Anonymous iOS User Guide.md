@@ -1,7 +1,7 @@
 # Anonymous Call Mobile SDK User Guide for iOS
-Version Number: **4.5.9**
+Version Number: **4.6.0**
 <br>
-Revision Date: **May 02, 2019**
+Revision Date: **May 30, 2019**
 
 ## Anonymous Call Mobile SDK overview
 
@@ -2164,8 +2164,8 @@ Set your application to use the WebRTC default set or the Mobile SDK preferred s
 
 ###### WebRTC default settings, MobileSDK preferred default settings, and acceptable values
 
-|   | WebRTC default | Mobile SDK preferred | Acceptable values |
-|----|----|----|----|----|
+|  | WebRTC default | Mobile SDK preferred | Acceptable values |
+|----|----|----|----|
 | MaxPlaybackRate | 24000  | 16000  | 8000-48000  |
 | MaxAverageBitRate | 40000  | 20000  | 6000-510000  |
 | DTX | Disabled  | Enabled  | true or false  |
