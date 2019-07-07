@@ -2,7 +2,7 @@
 
 SDK framework file can be found in the [SDK collection](https://github.com/Kandy-IO/kandy-anonymous-ios-sdk/tree/master/dist).
 
-MD5 Checksum for SDK collection : 0f112ca467e54c26f6b55c98065ccd6e
+MD5 Checksum for SDK collection : bf3a1149e27fa089fa065d4a3743f5c0
 
 Compatible iOS versions :
 
