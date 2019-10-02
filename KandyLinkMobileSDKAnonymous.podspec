@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.vendored_frameworks = ['MobileSDKAnonymous.framework', 'WebRTC.framework']
     s.pod_target_xcconfig = {
       'ENABLE_BITCODE' => 'NO',
-      'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/KLCPaaSWebRTC/Frameworks"',
+      'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/KandyWebRTC/Frameworks"',
       'OTHER_LDFLAGS' => '$(inherited) -framework WebRTC -ObjC',
       'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
    }
