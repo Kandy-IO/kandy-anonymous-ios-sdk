@@ -1,13 +1,7 @@
 # Anonymous Call Mobile SDK User Guide for iOS
-Version Number: **5.0.0**
+Version Number: **5.1.0**
 <br>
-Revision Date: **October 2, 2019**
-
-# Table of Contents
-
-@[toc]
-
-<div class="page-break"></div>
+Revision Date: **November 4, 2019**
 
 ## Anonymous Call Mobile SDK overview
 
@@ -35,14 +29,13 @@ This document provides help getting started developing your mobile application u
 
 The following items need to be complete prior to beginning work on your application:
 
-* You have downloaded the MobileSDKAnonymous package from http://developer.genband.com/MobileSDK .
-* You have extracted the contents of the MobileSDKAnonymous package and located MobileSDKAnonymous.framework.
 * Your Xcode development environment is set up and ready for new projects.
 * You know the IP address and port of the SPiDR/Kandy Link server.
 
 <div class="page-break" />
 
 ## Get Started
+
 ### Installation
 
 This section contains the required steps for beginning your mobile application development and an example of using the Anonymous Call Mobile SDK in Xcode 10.x.
@@ -141,7 +134,7 @@ Objective-C
 
    //set minimum Configuration values
    //server IP value for SPiDR/Kandy Link
-   configuration.restServerIP = @"127.0.0.1";
+   configuration.restServerIP = @"$SUBSCRIPTIONFQDN$";
    //server port value for SPiDR/Kandy Link
    configuration.restServerPort = @"443";
    //logger implementation defined by application
@@ -149,14 +142,14 @@ Objective-C
 
    //IP used in websocket connection creation.
    // If not provided, Rest Server IP will be used
-   configuration.webSocketServerIP  =@"127.0.0.1";
+   configuration.webSocketServerIP  =@"$WEBSOCKETFQDN$";
    //port used in websocket connection creation
    configuration.webSocketServerPort  =@"443";
 
    // add ICE Server
    SMICEServers *servers = [[SMICEServers alloc] init];
-   [servers addICEServer:@"turns:turn.spidr.com:443?transport=tcp"];
-   [servers addICEServer:@"stun:stun1.spidr.com:3478?transport=udp"];
+   [servers addICEServer:@"$ICESERVER1$"];
+   [servers addICEServer:@"$ICESERVER2$"];
    [configuration setICEServers:servers];
 }
 ```
@@ -176,7 +169,7 @@ func manageConfiguration() {
 
     //set minimum Configuration values
     //server IP value for SPiDR/Kandy Link
-    configuration.restServerIP = "127.0.0.1"
+    configuration.restServerIP = "$SUBSCRIPTIONFQDN$"
     //server port value for SPiDR/Kandy Link
     configuration.restServerPort = "443"
     //logger implementation defined by application
@@ -184,14 +177,14 @@ func manageConfiguration() {
 
     //IP used in websocket connection creation
     // If not provided, Rest Server IP will be used
-    configuration.webSocketServerIP  = "127.0.0.1"
+    configuration.webSocketServerIP  = "$WEBSOCKETFQDN$"
     //port used in websocket connection creation
     configuration.webSocketServerPort  = "443"
 
     // add ICE Server
     let servers = SMICEServers()
-    servers.addICEServer("turns:turn.spidr.com:443?transport=tcp")
-    servers.addICEServer("stun:stun1.spidr.com:3478?transport=udp")
+    servers.addICEServer("$ICESERVER1$")
+    servers.addICEServer("$ICESERVER2$")
     configuration.iceServers = servers
 }
 ```
@@ -544,7 +537,7 @@ func establishCallFailed(_ call: SMOutgoingCallDelegate, withError error: SMMobi
 
 Use the Time-Limited Token Based Anonymous Call functionality to place audio only or audio/video calls anonymously (without logging in with a username and password). A pre-shared (provisioned) key is used to obfuscate the time in the token - once handed out, SPiDR/KL will only allow the token to be used to access/subscribe to the services for a limited time (i.e. within 10 minutes of UTC time in token). This helps anonymous call functionality to be more secure.
 
-Application developer will be responsible for token generation. Token can be generated using the “Security Key” defined in SPiDR/KL and must be supplied to the SDK to start a call.
+Application developer will be responsible for token generation. Token can be generated using the "Security Key" defined in SPiDR/KL and must be supplied to the SDK to start a call.
 
 <div class="page-break"></div>
 
@@ -729,13 +722,13 @@ The `endCallWithReason` API is in the `SMCallDelegate` class.
 ```obj-c
 Objective-C
 
-[call endCallWithReason:@“Example end reason"];
+[call endCallWithReason:@"Example end reason"];
 ```
 
 ```swift
 Swift
 
-call.endCall(withReason:“Example end reason")
+call.endCall(withReason:"Example end reason")
 ```
 
 ###### Example: Receiving endCall Notification with Reason
@@ -1446,9 +1439,9 @@ The aspect ratio value is provided as the width/height of the video. For example
 
 iOS applications use an instance of the AVAudioSession class for audio-related operations, determining how the application will behave with relation to audio; for example, whether your application will silence audio when the screen locks or whether audio will continue playing. Since the instance is a singleton object that sets the audio context for the application, every object in the application uses the same instance for audio changes.
 
-The SMConfiguration class has a new variable called “audioSessionConfiguration", which is an object of the SMAudioSessionConfiguration class. You must set audioSessionConfiguration to ensure WebRTC does not override your requested audio session configuration.
+The SMConfiguration class has a new variable called "audioSessionConfiguration", which is an object of the SMAudioSessionConfiguration class. You must set audioSessionConfiguration to ensure WebRTC does not override your requested audio session configuration.
 
-**Note:** WebRTC reverts to its default audio session configuration when the call state is “on_hold" or “ended", but WebRTC will reapply your preferred configuration when the call state changes from “on_hold" to “in_call" or when you start a new call.
+**Note:** WebRTC reverts to its default audio session configuration when the call state is "on_hold" or "ended", but WebRTC will reapply your preferred configuration when the call state changes from "on_hold" to "in_call" or when you start a new call.
 
 The SMAudioSessionConfiguration class contains three properties used to define the behaviors: Mode, Category, and Category Options. The default values for all properties are nil, which means that if values are not set, WebRTC will use its default audio session configuration. Invalid values for these properties may cause issues for the WebRTC audio session. The list that follows contains the acceptable values for each property. Refer to the Apple developer documentation for AVAudioSession for more information about the values.
 
@@ -1628,13 +1621,13 @@ func sendParametersToCall(call: SMOutgoingCallDelegate, parameters:[String:Strin
 
 ### Set ICE options
 
-The Configuration class has an “iceOption" attribute used to determine the ICE behavior. The following are the available ICE options:
+The Configuration class has an "iceOption" attribute used to determine the ICE behavior. The following are the available ICE options:
 
 * ICE_TRICKLE: Trickle ICE completes signaling without waiting for candidate collection. Clients send candidates to one another as they’re discovered (after the call signaling is complete and the call is established). This provides faster call setup times but may cause media delays.
 
 * ICE_VANILLA: The default value. The clients must collect and send all candidates before initializing signaling. This process, in addition to the particular network configuration and the number of interfaces in the clients’ devices, can cause call setup delays.
 
-If the “ICE_TRICKLE" option is selected, the “ICECollectionTimeout" value is not used. If the call ends before all ICE candidates are collected, the MobileSDK does not listen to the TURN/STUN server since the peer connection is closed.
+If the "ICE_TRICKLE" option is selected, the "ICECollectionTimeout" value is not used. If the call ends before all ICE candidates are collected, the MobileSDK does not listen to the TURN/STUN server since the peer connection is closed.
 
 <div style="border-style:solid">
 <h5>WARNING</h5>
@@ -1721,7 +1714,9 @@ func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
 
 The Configuration class has a variable "preferredCodecSet", which is an instance of the SMCodecSet class. To use only a subset of the available codecs or to change the default priority, the "audioCodecs" and "videoCodecs" arrays of preferredCodecSet must be set. Codecs should be listed in order of priority (i.e. first codec listed is first priority).
 
-If you do not add any codecs to the preferredCodecSet variable or if you create the preferredCodecSet variable with a default constructor, the SDK uses the default codecs in the following priority order:
+If you do not add any codecs to the preferredCodecSet variable, Mobile SDK will use the WebRTC default behavior for codec preference.
+
+If you create the preferredCodecSet variable with a default constructor, the Mobile SDK uses the default codecs in the following priority order:
 
 * Audio Codecs: AC_OPUS, AC_G722, AC_PCMA, AC_PCMU, AC_ISAC, AC_ILBC
 * Video Codecs: VC_VP8, VC_VP9, VC_H264
@@ -1772,7 +1767,7 @@ Using "CodecToReplace" feature of Mobile SDK, applications can manipulate the co
 
 Note that, it is strongly recommended **not** to use this API during an ongoing call operation (e.g. mid-call events). A configuration change will affect the ongoing call and this may cause unstable WebRTC behavior.
 
-For the replacing codec payload number feature, the MobileSDK user have to create an instance of the CodecToReplace model class and set the codecDefinition (the definition of the codec that can be seen on the rtpmap in SDP, e.g. “telephone-event/8000” or “opus/48000/2”) and payloadNumber (e.g. “101” or “96” etc.) parameters. After creation of CodecToReplace object(s), they should be set to Mobile SDK through `setReplaceCodecSet` API on `Configuration` class.
+For the replacing codec payload number feature, the MobileSDK user have to create an instance of the CodecToReplace model class and set the codecDefinition (the definition of the codec that can be seen on the rtpmap in SDP, e.g. "telephone-event/8000" or "opus/48000/2") and payloadNumber (e.g. "101" or "96" etc.) parameters. After creation of CodecToReplace object(s), they should be set to Mobile SDK through `setReplaceCodecSet` API on `Configuration` class.
 
 After the Mobile SDK user set the ReplaceCodecSet configuration, all of the local offer call SDPs will be generated with the specified codec payload numbers and there will be no modification done on remote SDPs and local answer SDPs.
 
@@ -1910,7 +1905,7 @@ a=rtpmap:106 ulpfec/90000
 …
 ```
 
- * A simple replacement as <”opus/48000/2”, “114”> and <”telephone-event/48000”, “101”> :
+ * A simple replacement as <"opus/48000/2", "114"> and <"telephone-event/48000", "101"> :
 
 ```
 …
@@ -1999,7 +1994,7 @@ a=rtpmap:106 ulpfec/90000
 …
 ```
 
- * For H264, there are 2 codecs with the same description, so another property should be introduced for comparison in order to define which one to replace. So replacement should be defined as <”H264/90000”, “126”, “profile-level-id=42e029”>:
+ * For H264, there are 2 codecs with the same description, so another property should be introduced for comparison in order to define which one to replace. So replacement should be defined as <"H264/90000", "126", "profile-level-id=42e029">:
 
 ```
 …
@@ -2087,7 +2082,7 @@ a=fmtp:124 apt=104
 a=rtpmap:106 ulpfec/90000
 ```
 
- * If <”opus/48000/2”, “105”> provided through this configuration, there will be a conflict with “CN/16000” in the original SDP. In this case Mobile SDK will swap the payload numbers of these codecs as follows:
+ * If <"opus/48000/2", "105"> provided through this configuration, there will be a conflict with "CN/16000" in the original SDP. In this case Mobile SDK will swap the payload numbers of these codecs as follows:
 
 ```
 …
@@ -2377,8 +2372,8 @@ Use the `callAdditionalInfoChanged` callback method in `SMCallApplicationDelegat
 | Field  | Description                                                   |
 |--------|---------------------------------------------------------------|
 | action | The primary category of information                           |
-| type   | The “action" sub-category                                     |
-| callId | The identifier for the related call, which is different than the call session id. This id is either randomly generated by the Mobile SDK or set by the user. <br><br> **Note:** The call identifier is obtained using the “getId" method rather than the “getCallId" method (which would return the call session identifier)  |
+| type   | The "action" sub-category                                     |
+| callId | The identifier for the related call, which is different than the call session id. This id is either randomly generated by the Mobile SDK or set by the user. <br><br> **Note:** The call identifier is obtained using the "getId" method rather than the "getCallId" method (which would return the call session identifier)  |
 | time   | Occurrence time (epoch in milliseconds)                       |
 
 ###### Example
@@ -2392,9 +2387,9 @@ Use the `callAdditionalInfoChanged` callback method in `SMCallApplicationDelegat
 }
 ```
 
-The following list shows each available “action" category and its “type" sub-category:
+The following list shows each available "action" category and its "type" sub-category:
 
-* **iceTimeout:** Includes types for ICE collection timeout (assuming “2x" is the timeout configuration and “t" is when the ICE process ended)
+* **iceTimeout:** Includes types for ICE collection timeout (assuming "2x" is the timeout configuration and "t" is when the ICE process ended)
     * **iceNormal:** Time when the ICE collection process ended normally (period of t<x)
     * **iceOneRelay:** Time when the ICE collection process was interrupted by a timeout with at least one (audio and video) relay candidate (period of x<t<2x)
     * **iceNoRelay:** Time when the ICE collection process was interrupted by a timeout without a relay candidate (period of t=2x)
@@ -2609,7 +2604,7 @@ Objective-C
 
     //set minimum Configuration values
     //server IP value for SPiDR/Kandy Link
-    configuration.restServerIP = @"127.0.01";
+    configuration.restServerIP = @"$SUBSCRIPTIONFQDN$";
     //server port value for SPiDR/Kandy Link
     configuration.restServerPort = @"443";
     //logger implementation defined by application
@@ -2620,7 +2615,7 @@ Objective-C
     configuration.connectionType = WEBSOCKET;
 
     //IP used in websocket connection creation
-    configuration.webSocketServerIP = @"127.0.01";
+    configuration.webSocketServerIP = @"$WEBSOCKETFQDN$";
     //port used in websocket connection creation
     configuration.webSocketServerPort = @"443";
     //set to WS or WSS protocol
@@ -2628,12 +2623,8 @@ Objective-C
 
     //SPiDR TURN server in WebRTC's peer connection
     SMICEServers *iceServers = [[SMICEServers alloc] init];
-    [iceServers addICEServer:@"turns:turn1.spidr.com:443?transport=tcp"];
-    [iceServers addICEServer:@"turns:turn2.spidr.com:443?transport=tcp"];
-
-    // Adding SPiDR STUN server
-    [iceServers addICEServer:@"stun:turn1.spidr.com:3478?transport=udp"];
-    [iceServers addICEServer:@"stun:turn2.spidr.com:3478?transport=udp"];
+    [iceServers addICEServer:@"$ICESERVER1$"];
+    [iceServers addICEServer:@"$ICESERVER2$"];
 
     configuration.ICEServers = iceServers;
 
@@ -2674,7 +2665,7 @@ func manageConfiguration() {
 
     //set minimum Configuration values
     //server IP value for SPiDR/Kandy Link
-    configuration.restServerIP = "127.0.01"
+    configuration.restServerIP = "$SUBSCRIPTIONFQDN$"
     //server port value for SPiDR/Kandy Link
     configuration.restServerPort = "443"
     //logger implementation defined by application
@@ -2685,7 +2676,7 @@ func manageConfiguration() {
     configuration.connectionType = .websocket
 
     //IP used in websocket connection creation
-    configuration.webSocketServerIP  = "127.0.01"
+    configuration.webSocketServerIP  = "$WEBSOCKETFQDN$"
     //port used in websocket connection creation
     configuration.webSocketServerPort  = "443"
     //set to WS or WSS protocol
@@ -2693,12 +2684,8 @@ func manageConfiguration() {
 
     //SPiDR TURN server in WebRTC's peer connection
     let iceServers = SMICEServers()
-    iceServers.addICEServer("turns:turn1.spidr.com:443?transport=tcp")
-    iceServers.addICEServer("turns:turn2.spidr.com:443?transport=tcp")
-
-    // Adding SPiDR STUN server
-    iceServers.addICEServer("stun:turn1.spidr.com:3478?transport=udp")
-    iceServers.addICEServer("stun:turn2.spidr.com:3478?transport=udp")
+    iceServers.addICEServer("$ICESERVER1$")
+    iceServers.addICEServer("$ICESERVER2$")
 
     configuration.iceServers = iceServers;
 
