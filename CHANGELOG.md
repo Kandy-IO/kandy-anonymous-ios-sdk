@@ -5,6 +5,11 @@ Kandy Link Anonymous iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 5.2.0 - 2019-11-29
+
+### Added
+- WebRTC stack upgraded to version M78 `KAE-508`
+- Custom Kandy Agent HTTP Header is implemented `KAE-524`
 
 ## 5.1.0 - 2019-11-04
 
