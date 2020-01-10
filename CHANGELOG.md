@@ -5,6 +5,12 @@ Kandy Link Anonymous iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 5.3.0 - 2020-01-09
+
+### Fixed
+- Background thread was trying to access UI thread is fixed. `KAE-580`
+
+
 ## 5.2.0 - 2019-11-29
 
 ### Added

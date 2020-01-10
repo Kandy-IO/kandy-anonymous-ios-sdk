@@ -1,10 +1,20 @@
 # Kandy Link Anonymous iOS SDK
 
+<p>
+    <img alt="Cocoapods platforms" src="https://img.shields.io/cocoapods/p/KandyLinkMobileSDKAnonymous">
+    <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/kandy-io/kandy-anonymous-ios-sdk">
+    <img alt="Cocoapods" src="https://img.shields.io/cocoapods/v/KandyLinkMobileSDKAnonymous">
+</p>
+
 SDK framework file can be found in the [SDK collection](https://github.com/Kandy-IO/kandy-anonymous-ios-sdk/tree/master/dist).
 
 Compatible iOS versions :
 
-* iOS 9.X - iOS 12.X
+* iOS 10.X+ (please note iOS 13 is not yet supported for push relevant scenarios)
+
+Compatible XCode Versions :
+
+* XCode 10.X+
 
 Tested on :
 
