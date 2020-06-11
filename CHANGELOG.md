@@ -5,7 +5,9 @@ Kandy Link Anonymous iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
-## 5.6.0 - 2020-05-04
+## 5.7.0 - 2020-06-12
+
+## 5.6.0 - 2020-04-05
 
 ### Fixed
 - After Session Complete notification the end call DELETE request must be sent. `KAE-669`

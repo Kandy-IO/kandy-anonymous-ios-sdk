@@ -1,7 +1,7 @@
 # Anonymous Call Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **May 4, 2020**
+Revision Date: **June 12, 2020**
 
 ## Anonymous Call Mobile SDK overview
 
@@ -61,6 +61,7 @@ This section contains the required steps for beginning your mobile application d
 
 2. Go to project folder via command line and run "pod install" command and wait for cocoapods to finish installation of MobileSDK ,WebRTC frameworks and their dependencies
 
+If you have a trouble with getting latest version of **Kandy Link Anonymous iOS SDK** plaese run these suggested commands [here](https://gist.github.com/mbinna/4202236) in project directory where Podfile is located.
 
 #### Manual Installation
 
@@ -120,9 +121,11 @@ To see all available configurations, see [Appendix D: Detailed Configurations](#
 
 ###### Example: Accessing and updating Configuration
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 #import <MobileSDKAnonymous/MobileSDKAnonymous.h>
 
 - (void) manageConfiguration
@@ -158,9 +161,9 @@ Objective-C
    [configuration setICEServers:servers];
 }
 ```
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 import MobileSDKAnonymous
 
 func manageConfiguration() {
@@ -195,6 +198,7 @@ func manageConfiguration() {
     configuration.iceServers = servers
 }
 ```
+<!-- tabs:end -->
 
 ### Set up logging functionality
 
@@ -211,9 +215,11 @@ The Mobile SDK supports the following log levels:
 
 ###### Example: Define logger
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 #import <Foundation/Foundation.h>
 @interface ExampleLogger : NSObject <SMLoggingDelegate>
 
@@ -232,27 +238,31 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 class ExampleLogger : NSObject, SMLoggingDelegate {
 
 		//a logger implementation only needs to implement "log" method
     func log(_ logLevel: SMLogLevel, withLogContext logContext: String, withMethodName methodName: Selector?, withMessage logMessage: String) {
         //this implementation only writes the INFO level logs to console, omits the rest
         if(logLevel == .info) {
-            NSLog("\(logContext) - \(logMessage)")
+            let dateStr = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
+            print("\(dateStr) : \(logContext) - \(logMessage)")
         }
     }
 
 }
 ```
+<!-- tabs:end -->
 
 ###### Example: Initialize logger
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) initializeAndUseLogger
 {
     SMConfiguration * configuration = [SMConfiguration getInstance];
@@ -263,9 +273,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func initializeAndUseLogger() {
     let configuration = SMConfiguration.getInstance()
     let exampleLogger = ExampleLogger()
@@ -287,9 +297,11 @@ Anonymous calls can be manipulated with methods such as mute/unmute and start/st
 
 ###### Example: Setting Call Application Delegate
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 #import <MobileSDKAnonymous/MobileSDKAnonymous.h>
 
 @interface CallController () <SMCallApplicationDelegate>
@@ -305,9 +317,9 @@ Objective-C
 @end
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 import MobileSDKAnonymous
 
 class CallController: NSObject, SMCallApplicationDelegate {
@@ -319,6 +331,7 @@ class CallController: NSObject, SMCallApplicationDelegate {
 
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
@@ -336,27 +349,30 @@ The following code sample will request TURN server credentials from SPiDR/Kandy 
 
 ###### Example: Adding STUN/TURN server
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMICEServers *servers = [[SMICEServers alloc] init];
-[servers addICEServer:@"turns:turn1.spidr.com:443?transport=tcp"];
-[servers addICEServer:@"stun:turn1.spidr.com:3478?transport=udp"];
-[servers addICEServer:@"turns:turn2.spidr.com:443?transport=tcp"];
-[servers addICEServer:@"stun:turn2.spidr.com:3478?transport=udp"];
+[servers addICEServer:@"$TURNSERVER1$"];
+[servers addICEServer:@"$STUNSERVER1$"];
+[servers addICEServer:@"$TURNSERVER2$"];
+[servers addICEServer:@"$STUNSERVER2$"];
 [[SMConfiguration getInstance] setICEServers:servers];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 var servers = SMIceServers()
-servers.addICEServer("turns:turn1.spidr.com:443?transport=tcp")
-servers.addICEServer("stun:turn1.spidr.com:3478?transport=udp")
-servers.addICEServer("turns:turn2.spidr.com:443?transport=tcp")
-servers.addICEServer("stun:turn2.spidr.com:3478?transport=udp")
+servers.addICEServer("$TURNSERVER1$")
+servers.addICEServer("$STUNSERVER1$")
+servers.addICEServer("$TURNSERVER2$")
+servers.addICEServer("$STUNSERVER2$")
 SMConfiguration.getInstance().iceServers = servers
 ```
+<!-- tabs:end -->
 
 #### Add an external TURN/STUN server
 
@@ -366,58 +382,66 @@ Use the addICEServer:username:password: method of the ICEServers object to defin
 
 ###### Example: Add a STUN server
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMICEServers *servers = [[SMICEServers alloc] init];
-[servers addICEServer:@"stun:stun1.spidr.com:8322"];
+[servers addICEServer:@"$STUNSERVER1$"];
 [[SMConfiguration getInstance] setICEServers:servers];
 // or
 SMICEServers *servers = [[SMConfiguration getInstance] SMICEServers];
-[servers addICEServer:@"stun:stun1.spidr.com:8322"];
+[servers addICEServer:@"$STUNSERVER1$"];
 ```
+
+#### ** Swift Code **
 
 ```swift
-Swift
-
 var servers = SMIceServers()
-servers.addICEServer("stun:stun1.spidr.com:8322")
+servers.addICEServer("$STUNSERVER1$")
 SMConfiguration.getInstance().iceServers = servers
 // or
-SMConfiguration.getInstance().iceServers?.addICEServer("stun:stun1.spidr.com:8322")
+SMConfiguration.getInstance().iceServers?.addICEServer("$STUNSERVER1$")
 ```
+<!-- tabs:end -->
 
 ###### Example: Add a TURN server
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMICEServers *servers = [[SMConfiguration getInstance] SMICEServers];
 //to use UDP transport
-[servers addICEServer:@"turn:turn1.spidr.com:4432?transport=udp" username:@"username" password:@"password"];
+[servers addICEServer:@"$TURNSERVER1$" username:@"username" password:@"password"];
 //to use TCP transport
-[servers addICEServer:@"turn:turn2.spidr.com:4432?transport=tcp" username:@"username" password:@"password"];
+[servers addICEServer:@"$TURNSERVER2$" username:@"username" password:@"password"];
 //to use TLS transport
-[servers addICEServer:@"turns:turn3.spidr.com:4432?transport=tcp" username:@"username" password:@"password"];
+[servers addICEServer:@"$TURNSERVER2$" username:@"username" password:@"password"];
 ```
+
+#### ** Swift Code **
 
 ```swift
-Swift
-
 var servers = SMConfiguration.getInstance().iceServers
 //to use UDP transport
-servers.addICEServer("turn:turn1.spidr.com:4432?transport=udp", username: "username" password: "password")
+servers.addICEServer("$TURNSERVER1$", username: "username" password: "password")
 //to use TCP transport
-servers.addICEServer("turn:turn2.spidr.com:4432?transport=tcp", username: "username" password: "password")
+servers.addICEServer("$TURNSERVER2$", username: "username" password: "password")
 //to use TLS transport
-servers.addICEServer("turns:turn3.spidr.com:4432?transport=tcp", username: "username" password: "password")
+servers.addICEServer("$TURNSERVER2$", username: "username" password: "password")
 ```
+<!-- tabs:end -->
 
 ###### Example: Get the server(s)
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMICEServers *iceServers = [[SMConfiguration getInstance] SMICEServers];
 
 //credentials may also be updated directly
@@ -427,9 +451,9 @@ NSString *userOfFirst = serversArray.firstObject.username;
 NSString *passOfFirst = serversArray.firstObject.password;
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 var iceServers = SMConfiguration.getInstance().iceServers!
 
 //credentials may also be updated directly
@@ -438,6 +462,7 @@ let urlOfFirst  = serversArray.first?.url
 let userOfFirst = serversArray.first?.username
 let passOfFirst = serversArray.first?.password
 ```
+<!-- tabs:end -->
 
 If a server URL is entered multiple times, the last username and password will be used for the specified server. To remove a server, you must dispose the existing one and create a new instance, defining necessary servers again.
 
@@ -449,9 +474,11 @@ Use the Anonymous Call functionality to place audio only or audio/video calls an
 
 ###### Example: Establishing an outgoing call
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 #import <AnonymousMobileSDK/MobileSDK.h>
 
 - (void) anonymousCallExample
@@ -496,9 +523,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 import MobileSDKAnonymous
 
 func anonymousCallExample() {
@@ -537,6 +564,7 @@ func establishCallFailed(_ call: SMOutgoingCallDelegate, withError error: SMMobi
     NSLog("Establish call failed \(error.localizedDescription)")
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
@@ -550,9 +578,11 @@ Application developer will be responsible for token generation. Token can be gen
 
 ###### Example: Establishing an outgoing call
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 #import <AnonymousMobileSDK/MobileSDK.h>
 
 - (void) anonymousCallExample
@@ -604,9 +634,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 import MobileSDKAnonymous
 
 func anonymousCallExample() {
@@ -649,6 +679,7 @@ func establishCallFailed(_ call: SMOutgoingCallDelegate, withError error: SMMobi
     NSLog("Establish call failed \(error.localizedDescription)")
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
@@ -658,9 +689,11 @@ Use the End Call functionality to stop a current, anonymous call.
 
 ###### Example: Ending an anonymous call
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) endCallExample {
     [anonymousCall endCall]; //ends the call
     //the result of the endCall operation will be delivered by call back methods
@@ -689,9 +722,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func endCallExample() {
     anonymousCall.endCall() //ends the call
     //the result of the endCall operation will be delivered by call back methods
@@ -715,6 +748,7 @@ func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
     }
 }
 ```
+<!-- tabs:end -->
 
 ### End calls with reason
 
@@ -726,23 +760,28 @@ The `endCallWithReason` API is applicable to established calls.
 
 The `endCallWithReason` API is in the `SMCallDelegate` class.
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 [call endCallWithReason:@"Example end reason"];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 call.endCall(withReason:"Example end reason")
 ```
+<!-- tabs:end -->
 
 ###### Example: Receiving endCall Notification with Reason
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) callStatusChanged:(id<SMCallDelegate>)call withState:(SMCallState *)callState{
     if(callState.type == CALLSTATES_ENDED){
         NSLog(@"Call Ended with reason:",callState.reason);
@@ -750,15 +789,16 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
     if(callState.type == .ended){
         NSLog("Call Ended with reason: \(callState.reason)");
     }
 }
 ```
+<!-- tabs:end -->
 
 ### Supported call end reasons
 
@@ -787,29 +827,35 @@ The following Anonymous Call SDK-specific status codes are mapped to CALLSTATES_
 Other SIP-specific sessionParam statusCode values mapped to CALLSTATES_ENDED (e.g. statusCode 480, equivalent to previous NOT_AVAILABLE) are forwarded directly to the application layer.
 
 #### SMCallState class fields
-```obj-c
-Objective-C
 
+<!-- tabs:start -->
+
+#### ** Objective-C Code **
+
+```objectivec
 @property (nonatomic, readonly) SMCallStates type;
 @property (strong, nonatomic, readonly) NSString *reason;
 @property (nonatomic, readonly)  NSInteger statusCode;
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 open var type: SMCallStates { get }
 open var reason: String! { get }
 open var statusCode: Int { get }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
 ###### Example: Getting call end reason
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) callStatusChanged:(id<SMCallDelegate>) call withState: (SMCallState *) callState;
 {
     switch (callState.type)
@@ -849,9 +895,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
     switch (callState.type) {
     case .ended:
@@ -879,6 +925,7 @@ func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
     }
 }
 ```
+<!-- tabs:end -->
 
 ### Get active call list
 
@@ -886,9 +933,11 @@ Use the following API to get a pointer to the list of active call objects (i.e. 
 
 ###### Example: Getting active calls
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 @protocol SMCallServiceDelegate <NSObject>
 
 - (NSArray *) getActiveCalls;
@@ -896,11 +945,12 @@ NSArray *callList
 = [[[SMServiceProvider getInstance]getCallService]getActiveCalls];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let callList = SMServiceProvider.getInstance().getCallService().getActiveCalls()
 ```
+<!-- tabs:end -->
 
 ### Mid-Call operations
 
@@ -914,9 +964,11 @@ To stop sending audio from the microphone, mute method can be called. Until unmu
 
 ###### Example: Mute/unmute an anonymous call
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) muteUnmuteExample
 {
     [anonymousCall mute]; //mutes the call
@@ -947,9 +999,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func muteUnmuteExample() {
     anonymousCall.mute() //mutes the call
     anonymousCall.unMute() //Unmutes the call
@@ -974,6 +1026,7 @@ func unMuteCallFailed(_ call: SMCallDelegate, withError error: SMMobileError) {
     NSLog("Unmute failed")
 }
 ```
+<!-- tabs:end -->
 
 #### Video Start/Stop on a Call
 
@@ -983,9 +1036,11 @@ To start/stop sending video from the camera, video start/stop method can be call
 
 ###### Example: Video Start/Stop
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) videoStartStopExample
 {
     [anonymousCall videoStart]; //Starts the video stream of the local peer
@@ -1016,9 +1071,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func videoStartStopExample() {
     anonymousCall.videoStart() //Starts the video stream of the local peer
     anonymousCall.videoStop() //Stops the video stream of the local peer
@@ -1043,6 +1098,7 @@ func videoStopFailed(_ call: SMCallDelegate, withError error: SMMobileError) {
     NSLog("Video Stop failed")
 }
 ```
+<!-- tabs:end -->
 
 #### Hold/Unhold Call and Double Hold
 
@@ -1060,9 +1116,11 @@ For more information about call states, see [Appendix B: Call state transitions]
 
 ###### Example: Hold/unhold the call
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) holdUnholdExample
 {
     [anonymousCall hold]; //holds the call
@@ -1093,9 +1151,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func holdUnholdExample() {
     anonymousCall.hold() //Holds the call
     anonymousCall.unHold() //Unholds the call
@@ -1120,6 +1178,7 @@ func unHoldCallFailed(_ call: SMCallDelegate, withError error: SMMobileError) {
     NSLog("UnHold failed")
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
@@ -1127,9 +1186,11 @@ func unHoldCallFailed(_ call: SMCallDelegate, withError error: SMMobileError) {
 
 When remote peer holds the call, call status will be changed accordingly.
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 //current class implements SMCallApplicationDelegate protocol
 //current class instance is used as call application delegate in call service
 - (void) callStatusChanged:(id<SMCallDelegate>) call withState: (SMCallState *) callState;
@@ -1151,9 +1212,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 //current class implements SMCallApplicationDelegate protocol
 //current class instance is used as call application delegate in call service
 func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
@@ -1171,6 +1232,7 @@ func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
     }
 }
 ```
+<!-- tabs:end -->
 
 ### Change default camera device (front or back)
 
@@ -1184,23 +1246,26 @@ Call the SMConfiguration class with property "cameraPosition" to change the defa
 
 ###### Example: Change camera device default
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 // Sets the default camera position mode
 // see AVCaptureDevicePosition
 
 @property (nonatomic) AVCaptureDevicePosition cameraPosition;
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 // Sets the default camera position mode
 // see AVCaptureDevicePosition
 
 open var cameraPosition: AVCaptureDevice.Position
 ```
+<!-- tabs:end -->
 
 ### Change camera orientation
 
@@ -1217,9 +1282,11 @@ To change video orientation manually, call rotateCameraOrientationToPosition. Th
 
 ###### Example: Configure camera orientation for incoming and outgoing video
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 @implementation CallViewController
 
 // configuration can be changed any time before starting call
@@ -1238,9 +1305,9 @@ Objective-C
 @end
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 class CallViewController: UIViewController
 
     // configuration can be changed any time before starting call
@@ -1256,6 +1323,7 @@ class CallViewController: UIViewController
 
 }
 ```
+<!-- tabs:end -->
 
 ### Change local video resolution or camera position
 
@@ -1265,9 +1333,11 @@ Users can set local video resolution and switch between front and back cameras a
 
 ###### Example: Changing video resolution and camera position
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 -(void) changeVideoResolutionAndPosition {
 
     [currentCall setCaptureDevice:AVCaptureDevicePositionFront
@@ -1287,9 +1357,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func changeVideoResolutionAndPosition() {
 
     currentCall.setCaptureDevice(.front, withVideoResolution:AVCaptureSession.Preset.hd1280x720.rawValue) { (error) in
@@ -1303,6 +1373,7 @@ func changeVideoResolutionAndPosition() {
     }
 }
 ```
+<!-- tabs:end -->
 
 ### Send DTMF (Dual-Tone Multi-Frequency) signals
 
@@ -1313,9 +1384,11 @@ The Anonymous Call Mobile SDK supports sending Dual-Tone Multi-Frequency (DTMF) 
 
 #### API definition for sending DTMF
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 @protocol SMCallDelegate <NSObject>
 
 // other method definitions on SMCallDelegate
@@ -1333,9 +1406,9 @@ Objective-C
 @end
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 protocol SMCallDelegate: NSObjectProtocol {
 
 // other method definitions on SMCallDelegate
@@ -1352,14 +1425,17 @@ public func sendDTMF(_ tone: Int8) -> Bool
 
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
 ###### Example: Sending DTMF
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 #import <AnonymousMobileSDK/MobileSDK.h>
 
 - (void) sendDTMFExampleWithCall: (id<SMCallDelegate>) call andTone: (char) tone {
@@ -1367,9 +1443,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 import MobileSDKAnonymous
 
 func sendDTMFExampleWithCall(call: SMCallDelegate, andTone: String) {
@@ -1379,6 +1455,7 @@ func sendDTMFExampleWithCall(call: SMCallDelegate, andTone: String) {
     }
 }
 ```
+<!-- tabs:end -->
 
 ### Get media attributes
 
@@ -1388,9 +1465,11 @@ The application is notified of audio/video state, capture device position, and a
 
 ###### Example: Using the getMediaAttributes method
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMMediaAttributes *currentMediaAttributes = [call getMediaAttributes];
 BOOL localVideo = currentMediaAttributes.localVideo;
 BOOL localAudio = currentMediaAttributes.localAudio;
@@ -1399,9 +1478,9 @@ float remoteVideoAspectRatio = currentMediaAttributes.remoteVideoAspectRatio;
 float localVideoAspectRatio = currentMediaAttributes.localVideoAspectRatio;
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let currentMediaAttributes = call.getMediaAttributes()
 let localVideo = currentMediaAttributes.localVideo
 let localAudio = currentMediaAttributes.localAudio
@@ -1409,12 +1488,15 @@ let remoteVideo = currentMediaAttributes.remoteVideo
 let remoteVideoAspectRatio = currentMediaAttributes.remoteVideoAspectRatio
 let localVideoAspectRatio = currentMediaAttributes.localVideoAspectRatio
 ```
+<!-- tabs:end -->
 
 ###### Example: Getting remote and local aspect ratios
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) mediaAttributesChanged:(id<SMCallDelegate>)call withMediaAttributes:(SMMediaAttributes *)mediaAttributes
 {
     float remoteVideoAspectRatio = mediaAttributes.remoteVideoAspectRatio;
@@ -1422,14 +1504,15 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func mediaAttributesChanged(_ call: SMCallDelegate, with mediaAttributes: SMMediaAttributes) {
     let remoteVideoAspectRatio = mediaAttributes.remoteVideoAspectRatio
     let localVideoAspectRatio = mediaAttributes.localVideoAspectRatio
 }
 ```
+<!-- tabs:end -->
 
 The aspect ratio value is provided as the width/height of the video. For example, if the video resolution is:
 
@@ -1487,9 +1570,11 @@ The following example shows configuring and setting the audio session for a vide
 
 ###### Example: Configuring and setting the audio session
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMAudioSessionConfiguration *audioSessionConfig = [[SMAudioSessionConfiguration alloc] init];
 
 audioSessionConfig.mode = AVAudioSessionModeVoiceChat;
@@ -1500,9 +1585,9 @@ audioSessionConfig.categoryOptions = AVAudioSessionCategoryOptionDefaultToSpeake
 [[SMConfiguration getInstance] setAudioSessionConfiguration:audioSessionConfig];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let audioSessionConfig = SMAudioSessionConfiguration()
 
 audioSessionConfig.mode = AVAudioSessionModeVoiceChat
@@ -1512,6 +1597,7 @@ audioSessionConfig.categoryOptions = AVAudioSessionCategoryOptions.defaultToSpea
 //Set WebRTC audio session configuration
 SMConfiguration.getInstance().audioSessionConfiguration = audioSessionConfig
 ```
+<!-- tabs:end -->
 
 ### Configure WebRTC audio session configuration
 
@@ -1535,19 +1621,22 @@ Use the `useManualAudio` and `voipAudioEnabled` properties to set WebRTC audio s
 
 ###### Example: Setting WebRTC audio session configuration
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 [[[SMServiceProvider getInstance] getCallService] setUseManualAudio:YES];
 [[[SMServiceProvider getInstance] getCallService] setVoipAudioEnabled:YES];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 SMServiceProvider.getInstance().getCallService().useManualAudio = true
 SMServiceProvider.getInstance().getCallService().isVoipAudioEnabled = true
 ```
+<!-- tabs:end -->
 
 ### Send Custom Parameters for an anonymous call
 
@@ -1555,9 +1644,11 @@ If desired, custom SIP Headers can be send while initiating call and/or during t
 
 ###### Example: Sending Custom Parameters while establishing call
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) startCallWithTerminator:(SMUriAddress *)term videoEnabled:(BOOL)videoEnabled
 {
     [[[SMServiceProvider getInstance]  getCallService] createOutGoingCall:self
@@ -1572,9 +1663,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func startCallWithTerminator(term: SMUriAddress, videoEnabled:Bool) {
     SMServiceProvider.getInstance().getCallService().createOutGoingCall(self, andTerminator:targetAddress) { (call, error) in
 
@@ -1584,47 +1675,55 @@ func startCallWithTerminator(term: SMUriAddress, videoEnabled:Bool) {
     }
 }
 ```
+<!-- tabs:end -->
 
 ###### Example: Setting Custom Parameters during the call
 
 Custom Parameters can be set during the call, and they will send when next mid-call event occurs.
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) setParametersToCall:(id<SMOutgoingCallDelegate>)call parameters:(NSDictionary *)customParameters
 {
     [call setCustomParameters:parameters];
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func setParametersToCall(call: SMOutgoingCallDelegate, parameters:[String:String]) {
     call.setCustomParameters(parameters)
 }
 ```
+<!-- tabs:end -->
+
 ###### Example: Sending Custom Parameters during the call
 
 After setting custom parameters, instead of waiting next mid-call event, custom parameters can sent by `sendCustomParameters` method.
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) sendParametersToCall:(id<SMOutgoingCallDelegate>)call parameters:(NSDictionary *)customParameters
 {
     [call sendCustomParameters:parameters];
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func sendParametersToCall(call: SMOutgoingCallDelegate, parameters:[String:String]) {
     call.sendCustomParameters(parameters)
 }
 ```
+<!-- tabs:end -->
 
 ### Set ICE options
 
@@ -1636,24 +1735,28 @@ The Configuration class has an "iceOption" attribute used to determine the ICE b
 
 If the "ICE_TRICKLE" option is selected, the "ICECollectionTimeout" value is not used. If the call ends before all ICE candidates are collected, the MobileSDK does not listen to the TURN/STUN server since the peer connection is closed.
 
-<div style="border-style:solid">
+<hr/>
 <h5>WARNING</h5>
 Both parties must support Trickle ICE; Half Trickle is not supported in this implementation. If one party does not support Trickle ICE, signaling may be completed, but the Vanilla ICE client cannot receive ICE candidates sent by the other party. This state should be handled by the developer either by checking the RTCP statistics or waiting for the user to end the call. The MobileSDK will not end the call.
-</div>
+<hr/>
+
 
 ###### Example: Setting ICE options
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 [[SMConfiguration getInstance] setICEOption : ICE_TRICKLE];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 SMConfiguration.getInstance().iceOption = .trickle
 ```
+<!-- tabs:end -->
 
 ### Early media
 
@@ -1661,9 +1764,11 @@ The SDK supports early media (for example, hearing a ringing tone or an announce
 
 ###### Example: Call in early media
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMCallStates callState;
 …
 callState = CALLSTATES_UNKNOWN;
@@ -1693,9 +1798,9 @@ callState = CALLSTATES_UNKNOWN;
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 var callState: SMCallStates!
 …
 callState = .unknown
@@ -1716,6 +1821,7 @@ func callStatusChanged(_ call: SMCallDelegate, with callState: SMCallState) {
     }
 }
 ```
+<!-- tabs:end -->
 
 ### Set codec priority
 
@@ -1730,27 +1836,32 @@ If you create the preferredCodecSet variable with a default constructor, the Mob
 
 ###### Example: Setting codec priority
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMCodecSet *preferredCodecSet = [SMConfiguration getInstance].preferredCodecSet;
 [preferredCodecSet setAudioCodecs:@[[SMAudioCodec withType:AC_G722], [SMAudioCodec withType:AC_PCMA], [SMAudioCodec withType:AC_PCMU]]];
 [preferredCodecSet setVideoCodecs:@[[SMVideoCodec withType:VC_VP8]]];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let preferredCodecSet = SMConfiguration.getInstance().preferredCodecSet
 preferredCodecSet.audioCodecs = [SMAudioCodec.withType(.G722), SMAudioCodec.withType(.PCMA), SMAudioCodec.withType(.PCMU)]
 preferredCodecSet.videoCodecs = [SMVideoCodec.withType(.VP8)]
 ```
+<!-- tabs:end -->
 
 Or
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMCodecSet * preferredCodecSet = [SMCodecSet audioCodecs:@[[SMAudioCodec withType:AC_G722],
                                  [SMAudioCodec withType:AC_PCMA],
                                  [SMAudioCodec withType:AC_PCMU]]
@@ -1758,15 +1869,16 @@ SMCodecSet * preferredCodecSet = [SMCodecSet audioCodecs:@[[SMAudioCodec withTyp
 [[SMConfiguration getInstance] setPreferredCodecSet:preferredCodecSet];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let preferredCodecSet = SMCodecSet.audioCodecs([SMAudioCodec.withType(.G722),
                                                 SMAudioCodec.withType(.PCMA),
                                                 SMAudioCodec.withType(.PCMU)],
                                    videoCodecs:[SMVideoCodec.withType(.VP8)])
 SMConfiguration.getInstance().preferredCodecSet = preferredCodecSet
 ```
+<!-- tabs:end -->
 
 ### Replace codec payload number
 
@@ -1791,9 +1903,11 @@ After the Mobile SDK user set the ReplaceCodecSet configuration, all of the loca
 
 ###### Example: Replace codec payload number
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 NSMutableArray<SMCodecToReplace *> *codecsToReplace = [[NSMutableArray alloc] init];
 
 [codecsToReplace addObject: [SMCodecToReplace createWithCodecDefinition:@"telephone-event/48000" andPayloadNumber:@"101"]];
@@ -1806,9 +1920,9 @@ NSDictionary *customProperties = [NSDictionary dictionaryWithObjectsAndKeys: @"4
 [[SMConfiguration getInstance] setReplaceCodecSet:codecsToReplace];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 var codecsToReplace: NSMutableArray = NSMutableArray()
 
 codecsToReplace.addObject(SMCodecToReplace.create(codecdefinition: "telephone-event/48000", andPayloadNumber: "101"))
@@ -1820,6 +1934,7 @@ codecsToReplace.addObject(SMCodecToReplace.create(codecdefinition: "H264/90000",
 
 SMConfiguration.getInstance().replaceCodecSet = codecsToReplace
 ```
+<!-- tabs:end -->
 
 ###### Example: Effect of the Codec Payload Number Change on Sample SDPs
 
@@ -2190,9 +2305,11 @@ Once this configuration is set on SMConfiguration object, it will apply for all 
 
 ###### Example: Bandwidth limitation
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMCallReceiveBandwidthLimit *callReceiveBandwidthLimit =
      [[SMCallReceiveBandwidthLimit alloc] initWithVideoReceiveBandwidth:1000 withAudioReceiveBandwidth:300];
 
@@ -2200,14 +2317,15 @@ SMCallReceiveBandwidthLimit *callReceiveBandwidthLimit =
 
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let callReceiveBandwidthLimit = SMCallReceiveBandwidthLimit(videoReceiveBandwidth: 1000, withAudioReceiveBandwidth: 300)
 
 SMConfiguration.getInstance().receiveBandwidthLimit = callReceiveBandwidthLimit
 
 ```
+<!-- tabs:end -->
 
 ###### Example: Effect of the Bandwidth Limit on Sample SDP
 
@@ -2234,23 +2352,26 @@ b=TIAS:1000000
 
 ###### Example: Bandwidth limitation only for video
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMCallReceiveBandwidthLimit *callReceiveBandwidthLimit = [[SMCallReceiveBandwidthLimit alloc] init];
 callReceiveBandwidthLimit.videoReceiveBandwidth = 1000;
 
 [[SMConfiguration getInstance] setReceiveBandwidthLimit: callReceiveBandwidthLimit];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let callReceiveBandwidthLimit = SMCallReceiveBandwidthLimit()
 callReceiveBandwidthLimit.videoReceiveBandwidth = 1000
 
 SMConfiguration.getInstance().receiveBandwidthLimit = callReceiveBandwidthLimit
 ```
+<!-- tabs:end -->
 
 ###### Example: Effect of the Bandwidth Limit only for video on Sample SDP
 
@@ -2309,26 +2430,31 @@ The following shows different audio bandwidth usage configuration examples. If a
 
 ###### Example: Use the Mobile SDK preferred set
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMAudioCodecConfiguration *config = [SMAudioCodecConfiguration
 configurationWithMobileSDKPreferredSet];
 [[SMConfiguration getInstance] setAudioCodecConfigurations:config];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let config = SMAudioCodecConfiguration.withMobileSDKPreferredSet()
 SMConfiguration.getInstance().audioCodecConfigurations = config
 ```
+<!-- tabs:end -->
 
 ###### Example: Use the Mobile SDK preferred set with changes
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMAudioCodecConfiguration *config = [SMAudioCodecConfiguration
 configurationWithMobileSDKPreferredSet];
     [config setOpusMaxAverageBitRate:25000];
@@ -2336,20 +2462,23 @@ configurationWithMobileSDKPreferredSet];
 [[SMConfiguration getInstance] setAudioCodecConfigurations: config];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let config = .SMAudioCodecConfiguration.withMobileSDKPreferredSet()
 config.opusMaxAverageBitRate = 25000
 config.opusMaxPlaybackRate = 24000
 SMConfiguration.getInstance().audioCodecConfigurations = config
 ```
+<!-- tabs:end -->
 
 ###### Example: Use the WebRTC default set with changes
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 SMAudioCodecConfiguration *config = [SMAudioCodecConfiguration
 configurationWithWebRTCDefaultSet];
     [config setOpusMaxAverageBitRate:25000];
@@ -2360,9 +2489,9 @@ configurationWithWebRTCDefaultSet];
 [[SMConfiguration getInstance] setAudioCodecConfigurations: config];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 let config = SMAudioCodecConfiguration.withWebRTCDefaultSet()!
 config.opusMaxAverageBitRate = 25000
 config.opusMaxPlaybackRate = 24000
@@ -2371,6 +2500,7 @@ config.opusDtx = true
 config.opusFec = true
 SMConfiguration.getInstance().audioCodecConfigurations = config
 ```
+<!-- tabs:end -->
 
 ### Get additional information about a call
 
@@ -2416,9 +2546,11 @@ The following list shows each available "action" category and its "type" sub-cat
 
 ###### Example: Listening call additional info changes
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 - (void) callAdditionalInfoChanged:(id<SMCallDelegate>)call
 withDictionary:(NSDictionary*)detailedInfo
 {
@@ -2438,9 +2570,9 @@ stringWithFormat:@"Detailed info is %@", detailedInfo]];
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 func callAdditionalInfoChanged(_ call: SMCallDelegate, with detailedInfo: [AnyHashable : Any]) {
     let callid = call.id()
     let type = detailedInfo["type"]
@@ -2455,6 +2587,7 @@ func callAdditionalInfoChanged(_ call: SMCallDelegate, with detailedInfo: [AnyHa
     NSLog("Detailed info is \(detailedInfo)")
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
@@ -2494,10 +2627,10 @@ See [Appendix E: Examples of call statistic data](#appendix-e-examples-of-call-s
 
 <div class="page-break"></div>
 
-<div style="border-style:solid">
+<hr/>
 <h5>WARNING</h5>
 If there is a bandwidth or CPU limitation, WebRTC will decrease video resolution and FPS values automatically. The Mobile SDK does not inform the application of the automatic change; the application must check the values using the getRTPStatistics method.
-</div>
+<hr/>
 
 ###### Example: SMCallStatistic object
 
@@ -2510,9 +2643,11 @@ values: [googActiveConnection: true], [bytesReceived: 92193], [byesSent: 87940],
 
 ###### Example: Retrieving statistics
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 [[currentCall getRTPStatistics:^(NSArray *statistics) {
 
     SMCallStatistic *statistic = statistic.firstObject;
@@ -2524,9 +2659,9 @@ Objective-C
 }];
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 currentCall.getRTPStatistics({ (statistics) in
     let statistic = statistic.firstObject as! SMCallStatistic;
 
@@ -2536,6 +2671,7 @@ currentCall.getRTPStatistics({ (statistics) in
     NSLog("Report values : \(statistic.values)")
 })
 ```
+<!-- tabs:end -->
 
 For a full example of the data received, see [Appendix E: Examples of call statistic data](#appendix-e-examples-of-call-statistic-data).
 
@@ -2599,9 +2735,11 @@ The following impacts should be considered when managing your mobile application
 
 This section contains usage of all configurations that Anonymous Mobile SDK provides.
 
-```obj-c
-Objective-C
+<!-- tabs:start -->
 
+#### ** Objective-C Code **
+
+```objectivec
 #import <MobileSDKAnonymous/MobileSDKAnonymous.h>
 
 - (void) manageConfiguration
@@ -2663,9 +2801,9 @@ Objective-C
 }
 ```
 
-```swift
-Swift
+#### ** Swift Code **
 
+```swift
 import MobileSDKAnonymous
 
 func manageConfiguration() {
@@ -2725,6 +2863,7 @@ func manageConfiguration() {
     configuration.auditFrequency = 30;
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
