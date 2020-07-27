@@ -12,7 +12,7 @@
 
 [CocoaPods](https://cocoapods.org/pods/KandyLinkMobileSDKAnonymous) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate *Kandy Link Anonymous iOS SDK* into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-`pod 'KandyLinkMobileSDKAnonymous', '~> 5.8.0'`
+`pod 'KandyLinkMobileSDKAnonymous', '~> 5.9.0'`
 
 ### Manual
 
