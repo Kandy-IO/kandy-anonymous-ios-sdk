@@ -1,7 +1,7 @@
 # Anonymous Call Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **July 22, 2020**
+Revision Date: **August 28, 2020**
 
 ## Anonymous Call Mobile SDK overview
 
@@ -220,35 +220,81 @@ The Mobile SDK supports the following log levels:
 #### ** Objective-C Code **
 
 ```objectivec
-#import <Foundation/Foundation.h>
+#define CONSOLE_LOG_PATH [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"consoleLog.log"]
+
 @interface ExampleLogger : NSObject <SMLoggingDelegate>
 
 @end
 
 @implementation ExampleLogger
-
-//a logger implementation only needs to implement "log" method
-- (void) log:(LogLevel)logLevel withLogContext:(NSString *)logContext withMethodName(SEL) methodName withMessage:(NSString *)logMessage
-{
-    //this implementation only writes the INFO level logs to console, omits the rest
-    if(logLevel == INFO)
+    NSFileHandle *myHandle;
+    - (id)init
     {
-        NSLog(@"%@", [NSString stringWithFormat:@"[%@] [%@]", logContext, logMessage]);
+        self = [super init];
+        if (self) {
+            SMConfiguration * configuration = [SMConfiguration getInstance];
+            configuration.logLevel = TRACE;
+            configuration.logger = self;
+            [self initLogFile];
+        }
+        return self;
     }
-}
+    - (void) initLogFile {
+        if(myHandle) [myHandle closeFile];
+        
+        if(![[NSFileManager defaultManager] fileExistsAtPath:CONSOLE_LOG_PATH])
+            [@"" writeToFile:CONSOLE_LOG_PATH atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+        NSLog(@"Log File Path: %@", CONSOLE_LOG_PATH);
+        myHandle = [NSFileHandle fileHandleForUpdatingAtPath:CONSOLE_LOG_PATH];
+    }
+
+    -(void)log:(SMLogLevel)logLevel withLogContext:(NSString *)logContext withMethodName:(SEL) methodName withMessage:(NSString*)logMessage{
+        NSString *methodStr = NSStringFromSelector(methodName);
+        
+        NSString *msg =[NSString stringWithFormat:@"[%@] <%@-%@>: %@",levelStr, logContext, methodStr, logMessage];
+        NSLog(@"%@", msg);
+        NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterMediumStyle];
+        [myHandle seekToEndOfFile];
+        [myHandle writeData:[[dateString stringByAppendingFormat:@": %@\n", msg] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+@end
 ```
 
 #### ** Swift Code **
 
 ```swift
 class ExampleLogger : NSObject, SMLoggingDelegate {
+    private var handler: FileHandle?
+    private override init() {
+        super.init()
+        let conf = SMConfiguration.getInstance()
+        conf.logLevel = .trace
+        conf.logger = self
+        self.initLogFile()
+    }
+    private func initLogFile() {
+        let destPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let fullDestPath = NSURL(fileURLWithPath: destPath).appendingPathComponent("ExampleLogger.log")
+        let fullDestPathString = fullDestPath!.path
+        if !FileManager.default.fileExists(atPath: fullDestPathString) {
+            do {
+                try "".write(toFile: fullDestPathString, atomically: true, encoding: String.Encoding.utf8)
+            } catch {
+                NSLog("Can't write to file to device directory - Error: \(error.localizedDescription)")
+            }
+        }
+        handler = FileHandle.init(forUpdatingAtPath: fullDestPathString)
+    }
 
-		//a logger implementation only needs to implement "log" method
     func log(_ logLevel: SMLogLevel, withLogContext logContext: String, withMethodName methodName: Selector?, withMessage logMessage: String) {
-        //this implementation only writes the INFO level logs to console, omits the rest
-        if(logLevel == .info) {
-            let dateStr = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
-            print("\(dateStr) : \(logContext) - \(logMessage)")
+        let dateStr = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
+        let logString = "\(dateStr) : \(logContext) - \(logMessage)"
+        print(logString)
+        if let logData = logString.data(using: String.Encoding.utf8) {
+            handler?.write(logData)
         }
     }
 
@@ -267,8 +313,6 @@ class ExampleLogger : NSObject, SMLoggingDelegate {
 {
     SMConfiguration * configuration = [SMConfiguration getInstance];
     ExampleLogger    * exampleLogger    = [[ExampleLogger alloc] init];
-    configuration.logger          = exampleLogger;
-
     NSLog(@"logger is initialized");
 }
 ```
@@ -279,11 +323,11 @@ class ExampleLogger : NSObject, SMLoggingDelegate {
 func initializeAndUseLogger() {
     let configuration = SMConfiguration.getInstance()
     let exampleLogger = ExampleLogger()
-    configuration.logger = exampleLogger
 
     NSLog("Logger is initialized")
 }
 ```
+<!-- tabs:end -->
 
 <div class="page-break"></div>
 
