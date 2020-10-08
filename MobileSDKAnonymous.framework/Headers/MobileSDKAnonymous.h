@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 5.10.0
+ * @version: 5.11.0
  *
  */
 
@@ -26,7 +26,6 @@ FOUNDATION_EXPORT const unsigned char MobileSDKVersionString[];
 #import <MobileSDKAnonymous/SMCallLogServiceDelegate.h>
 #import <MobileSDKAnonymous/SMCallTypes.h>
 #import <MobileSDKAnonymous/SMCallState.h>
-#import <MobileSDKAnonymous/SMCallStatistic.h>
 #import <MobileSDKAnonymous/SMMediaAttributes.h>
 
 //ServiceProvider
