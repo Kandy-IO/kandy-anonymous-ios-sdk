@@ -61,7 +61,7 @@ This section contains the required steps for beginning your mobile application d
 ...
 
 target 'YOUR_TARGET_NAME' do
-    pod 'KandyLinkMobileSDKAnonymous', '~> $SDK_VERSION$'
+    pod 'KandyLinkMobileSDKAnonymous', '~> $SDK_VERSION$ '
 end
 
 post_install do |installer|
@@ -73,6 +73,7 @@ post_install do |installer|
 end
 
 ...
+```
 
 2. Go to project folder via command line and run "pod install" command and wait for cocoapods to finish installation of MobileSDK ,WebRTC frameworks and their dependencies
 
