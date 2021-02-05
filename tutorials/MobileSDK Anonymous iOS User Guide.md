@@ -1,7 +1,7 @@
 # Anonymous Call Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **December 30, 2020**
+Revision Date: **February 04, 2021**
 
 ## Anonymous Call Mobile SDK overview
 
@@ -220,15 +220,6 @@ func manageConfiguration() {
 
 Logging provides a way to trace process execution. The Log Manager is defined to handle logging requests made by the Mobile SDK. The Log Manager does not process the logging messages, rather it receives logging message requests and delivers them to the logger defined in the Configuration utility (logger is initially "null"; you must set an object which conforms to LoggingInterface methods in the Configuration utility).
 
-The Mobile SDK supports the following log levels:
-
-* ERROR (all exceptions are logged at this level)
-* WARNING
-* INFO (used for tracing issues)
-* TRACE
-* VERBOSE
-* TRACE_WEBRTC
-
 ###### Example: Define logger
 
 <!-- tabs:start -->
@@ -317,6 +308,26 @@ class ExampleLogger : NSObject, SMLoggingDelegate {
 }
 ```
 <!-- tabs:end -->
+
+##### Log Levels
+###### Trace_WebRTC
+The application developer should use this level to view all webrtc and SDK logs.
+###### Trace
+This is really fine-grained information. When you're at this level, you're basically looking to capture every detail you possibly can about the application's behavior. Think of this level as the method you should use for all the logging you will do while tracking a specific problem and most likely get rid of it once you find the problem.
+
+App developer should use this level to view all messages on the sdk side. The logs coming from this level will lead to the solution of the SDK error. However, it should be noted that webrtc logs will not be displayed at this level.
+###### Info
+Info messages correspond to normal application behavior. They provide the skeleton of what happened. A service started or stopped. The notification engine started, you got a new message or network status changed. Think of it as all the messages you'd like to see in the log when creating call for example, or in other words - anything that might help you resolve or at least identify a problem without looking in the source code.
+
+Logs at this level can either solve the problem or have ideas to solve the problem, but this is not guaranteed. It contains less information than the trace level.However, it should be noted that webrtc logs will not be displayed at this level.
+###### Warning
+Use this log level to indicate that you might have a problem and that you've detected an unusual situation. Maybe you were trying to invoke a service and it failed a couple of times before connecting on an automatic retry or you were trying to start a service which already running. It's unexpected and unusual, but no real harm done, and it's not known whether the issue will persist or recur. The application can tolerate warning messages, but they should always be justified and examined.
+
+This level can be use to see errors and warnings from Sdk. Developer can view where the error is, but may not be able to find root cause of an error.Webrtc logs will not be displayed at this level
+###### Error
+An error is a serious issue and represents the failure of something important going on in your application. No system can tolerate items logged on this level. Maybe you've got something like dropped WebSocket connections or the inability to access a service.
+
+This level can be use to see only errors from Sdk. Developer can view where the error is, but may not be able to find root cause of an error.Webrtc logs will not be displayed at this level
 
 ###### Example: Initialize logger
 
@@ -2959,6 +2970,10 @@ This section contains usage of all configurations that Anonymous Mobile SDK prov
     //The default is ICE_VANILLA
     configuration.iceOption = ICE_TRICKLE;
 
+    //Set supported call features (ringing feedback)
+    //SPiDR server must support this feature
+    configuration.ringingFeedbackOption = CLIENT;
+    
     //Configure WebRTC audio sessions
     SMAudioSessionConfiguration *audioSessionConfig = [[SMAudioSessionConfiguration alloc] init];
     audioSessionConfig.mode = AVAudioSessionModeVideoChat;
@@ -3010,6 +3025,10 @@ func manageConfiguration() {
     //Set one of the ice candidate negotiation types (ICE_VANILLA or ICE_TRICKLE)
     //The default is ICE_VANILLA
     configuration.iceOption = .trickle;
+
+    //Set supported call features (ringing feedback)
+    //SPiDR server must support this feature
+    configuration.ringingFeedbackOption = CLIENT;
 
     //Configure WebRTC audio sessions
     let audioSessionConfig = SMAudioSessionConfiguration()

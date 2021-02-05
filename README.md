@@ -16,7 +16,7 @@
 ...
 
 target 'YOUR_TARGET_NAME' do
-    pod 'KandyLinkMobileSDKAnonymous', '~> 5.14.0'
+    pod 'KandyLinkMobileSDKAnonymous', '~> 5.15.0'
 end
 
 post_install do |installer|
