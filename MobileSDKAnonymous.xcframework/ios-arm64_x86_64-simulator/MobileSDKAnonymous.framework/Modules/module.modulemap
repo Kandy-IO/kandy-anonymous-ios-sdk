@@ -1,0 +1,6 @@
+framework module MobileSDKAnonymous {
+  umbrella header "MobileSDKAnonymous.h"
+
+  export *
+  module * { export * }
+}
