@@ -59,6 +59,7 @@ This section contains the required steps for beginning your mobile application d
 
 ```ruby
 ...
+use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
     pod 'KandyLinkMobileSDKAnonymous', '~> $SDK_VERSION$ '
