@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
     s.name              = 'KandyLinkMobileSDKAnonymous'
-    s.version           = '5.17.0'
+    s.version           = '5.18.0'
     s.summary           = 'KandyLinkMobileSDKAnonymous'
     s.homepage          = 'https://github.com/Kandy-IO/'
     s.license 		      = { :type => 'MIT', :file => 'mit-license.txt'}
     s.author            = { 'Name' => 'cpaassdk@netas.com.tr' }
     s.platform          = :ios
-    s.source            = { :git => 'https://github.com/Kandy-IO/kandy-anonymous-ios-sdk.git', :tag => '5.17.0'}
+    s.source            = { :git => 'https://github.com/Kandy-IO/kandy-anonymous-ios-sdk.git', :tag => '5.18.0'}
     s.dependency  'KandyWebRTC'
     s.ios.deployment_target   = '11.0'
     s.library           = ['c++','icucore','z']

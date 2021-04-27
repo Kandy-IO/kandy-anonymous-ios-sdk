@@ -1,7 +1,7 @@
 # Anonymous Call Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **March 26, 2021**
+Revision Date: **April 26, 2021**
 
 ## Anonymous Call Mobile SDK overview
 
@@ -59,7 +59,6 @@ This section contains the required steps for beginning your mobile application d
 
 ```ruby
 ...
-use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
     pod 'KandyLinkMobileSDKAnonymous', '~> $SDK_VERSION$ '
