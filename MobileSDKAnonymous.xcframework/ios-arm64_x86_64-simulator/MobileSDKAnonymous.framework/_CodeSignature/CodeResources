@@ -6,119 +6,119 @@
 	<dict>
 		<key>Headers/MobileSDKAnonymous.h</key>
 		<data>
-		iPZQgiHiEbccPqzCufp93r27lu4=
+		R7wH6rqDM9zyko93hwgBSa+ZIgc=
 		</data>
 		<key>Headers/SMAudioCodecConfiguration.h</key>
 		<data>
-		KCblIhdK32/At0ToIxXCEOERBao=
+		UF6xQ7noeYR0xqZb4NSsNMkNK+0=
 		</data>
 		<key>Headers/SMAudioSessionConfiguration.h</key>
 		<data>
-		42roFQS1IfSMrM7ciEXI3gRSj8w=
+		eeLL4SAi1GW9ax2OlGpLNfIveFk=
 		</data>
 		<key>Headers/SMCallApplicationDelegate.h</key>
 		<data>
-		LiO46JoxazKwevoAWWjvmBh0CXI=
+		VjxbvylQVPoFxLvnv+1Uvy4LBKU=
 		</data>
 		<key>Headers/SMCallDelegate.h</key>
 		<data>
-		UTX3xXpDOMeymgvr8IH88MxFjLM=
+		hcWtBWxtQbitp5LBLJHA+8dDT3Q=
 		</data>
 		<key>Headers/SMCallLogServiceDelegate.h</key>
 		<data>
-		PX06sm5qBbXkZx3AVlosAKutI4Y=
+		OaeabzeHm6J9rvv/ZKqOUfnLmss=
 		</data>
 		<key>Headers/SMCallServiceDelegate.h</key>
 		<data>
-		qAiVAEkfzIssQPwKq88ERPBwhQk=
+		eqV+cC6C2VkgkPNVgNpwSKCpGmg=
 		</data>
 		<key>Headers/SMCallState.h</key>
 		<data>
-		X5n6C7E6qSYPttceJvK7SiGocSA=
+		9/VB557631vMgC6kGBfID+X+v14=
 		</data>
 		<key>Headers/SMCallTypes.h</key>
 		<data>
-		n9t3DGRPbG7oVspzjC+oHWIvfCs=
+		tkAQ2+GoQG74sBviU/yPrtVuaps=
 		</data>
 		<key>Headers/SMCameraModes.h</key>
 		<data>
-		Sj7W/ivbd7G9EQVEJcOfk2VMhpk=
+		Ujv4gUtqBkewFZeoNIvJ+CTTySA=
 		</data>
 		<key>Headers/SMCodecSet.h</key>
 		<data>
-		kbTyy9i6Iq1pukbIcdaVebZSX4s=
+		ndCbsFi0EiO6XBouiLs+ap9BXF8=
 		</data>
 		<key>Headers/SMCodecToReplace.h</key>
 		<data>
-		g7QzMM4/jdWxSiOvOORLfRNu99I=
+		L58jO9laie8Hzd7jxF695v1d8TY=
 		</data>
 		<key>Headers/SMCodecType.h</key>
 		<data>
-		M9FNT0IY+6JoaEyXpgrhKjNzxz4=
+		FdduaYAH8pTkIuqOlT/08/FtB5g=
 		</data>
 		<key>Headers/SMConfiguration.h</key>
 		<data>
-		J7DqjkQogwML2ePV607gRxpcUrg=
+		Pd8lm8LSI3zNsZ+fF5+koNEx+/E=
 		</data>
 		<key>Headers/SMConnectionType.h</key>
 		<data>
-		UMG2cFKQv4CQuvO8DZRlCvk5bTQ=
+		LrM0OZCKXdpKP/IV0kyxaPkjDR0=
 		</data>
 		<key>Headers/SMErrorTypes.h</key>
 		<data>
-		bSmXLGQmdeNDvxXJ+O8NjYcAaWY=
+		VwDYyMjKig/zAasCoc9H1L6AKP0=
 		</data>
 		<key>Headers/SMICEOptions.h</key>
 		<data>
-		bO7DeuovXb1bbutBEzoQvF8AGe8=
+		MgcqCFjXhK2Ngcbyn1oDAW6/pt0=
 		</data>
 		<key>Headers/SMICEServers.h</key>
 		<data>
-		MIuxkgufzs03GXu+KB/afDK7mrg=
+		miiYg3cIWJO/+xrs2bpsEbObby0=
 		</data>
 		<key>Headers/SMLogType.h</key>
 		<data>
-		7g51uUBNfz/zYlWDO5jFtJBc9RY=
+		YJH8PR6FjY73Cw89YAA/6Bgt6+8=
 		</data>
 		<key>Headers/SMLoggingDelegate.h</key>
 		<data>
-		wc8x895umcGJxgmGMSjjIz7ddiM=
+		EE3mboGbnsXkpj4eRDnwU/41CIo=
 		</data>
 		<key>Headers/SMMediaAttributes.h</key>
 		<data>
-		9p3D9Ta5XvpIJyh/tev2F8hdNlA=
+		7tyGLvP7/B9bXaR4RL/kYrclqjI=
 		</data>
 		<key>Headers/SMMobileError.h</key>
 		<data>
-		qfMvSaopCWcCXDc9jgUWTa8Z9us=
+		p7NWDHdYbtHnB24dVknTStQfo5E=
 		</data>
 		<key>Headers/SMOutgoingCallDelegate.h</key>
 		<data>
-		JQguCSPPNBxjCwecBZxajioDiqo=
+		JQ1w00+HRBed3bwL03Ur+lBXioE=
 		</data>
 		<key>Headers/SMRingingFeedbackOptions.h</key>
 		<data>
-		ip3rIRudq/8NFszXq0X5Rv8zHAw=
+		U45PyhO4evWPsZkzsvjlbcmvV4M=
 		</data>
 		<key>Headers/SMScalingType.h</key>
 		<data>
-		n8lxV80/Ab+4hEO2W1M/G48H1Kk=
+		zpYKrjAo2U3RqvPtscKqSPwIFSs=
 		</data>
 		<key>Headers/SMServiceProvider.h</key>
 		<data>
-		CDLcZVj35OTDF63DFN83bBZTF5I=
+		g34nNpygqSm2dsGRKlqvSJ9ir/Y=
 		</data>
 		<key>Headers/SMSlowStartCallPolicy.h</key>
 		<data>
-		3H/kaM146aLS/uxqJ+yMzuQTOTA=
+		6Tb6bUAppV0ceIWika1b6H9rl1s=
 		</data>
 		<key>Headers/SMUriAddress.h</key>
 		<data>
-		+2ydO8DL5Uq5Lo0ffX2UIbzXOoY=
+		a2rs/QcoZF7VfHpA59rcW5FnaGQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		QZhxt/yet63npuGNcXuT1BAdxQk=
+		zPqFW/0bqWGYCaIbWpTf3p14DkI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -131,308 +131,308 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iPZQgiHiEbccPqzCufp93r27lu4=
+			R7wH6rqDM9zyko93hwgBSa+ZIgc=
 			</data>
 			<key>hash2</key>
 			<data>
-			eiu9F1OfIhPkUlBfIoChAc+6raDsnSjtWbIWV4wxRjA=
+			vd870D+MXaqZ5IY0+vwOSS2fzw5P1RnxB2qx8NIbGVg=
 			</data>
 		</dict>
 		<key>Headers/SMAudioCodecConfiguration.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KCblIhdK32/At0ToIxXCEOERBao=
+			UF6xQ7noeYR0xqZb4NSsNMkNK+0=
 			</data>
 			<key>hash2</key>
 			<data>
-			HdO6Ku5Ld38PE+a8easDd8s0hGFERiQlLt1mH3Dak0U=
+			593P/S1yPttCzqhGCtYGb2ZGF6Op4Sji5FvoqLlpO2k=
 			</data>
 		</dict>
 		<key>Headers/SMAudioSessionConfiguration.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			42roFQS1IfSMrM7ciEXI3gRSj8w=
+			eeLL4SAi1GW9ax2OlGpLNfIveFk=
 			</data>
 			<key>hash2</key>
 			<data>
-			Y2V+WGOBqF2S+N6VF6dGeLmKfSatPmegiwq93hXXGm8=
+			tl/923rD103BRYj8grwZDWLp3xlsXBBdFHOushcrD8U=
 			</data>
 		</dict>
 		<key>Headers/SMCallApplicationDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LiO46JoxazKwevoAWWjvmBh0CXI=
+			VjxbvylQVPoFxLvnv+1Uvy4LBKU=
 			</data>
 			<key>hash2</key>
 			<data>
-			D0rrnx6ZHJk8a9ePTdexTwoqReKtoHDp5m4BDt+a6pA=
+			hU+kl/ib9LY3KBxhXSjD21uy+kyNM47QKqII64rFl40=
 			</data>
 		</dict>
 		<key>Headers/SMCallDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UTX3xXpDOMeymgvr8IH88MxFjLM=
+			hcWtBWxtQbitp5LBLJHA+8dDT3Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			2+kY4GdAgi+nSq45NT8eczRNnSt5MHk1Mx1z4sPQ/sg=
+			GMfxvsqO3LCK2ft5J1oxwJIcdFV8YNpwQ9Ml10WCp6g=
 			</data>
 		</dict>
 		<key>Headers/SMCallLogServiceDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PX06sm5qBbXkZx3AVlosAKutI4Y=
+			OaeabzeHm6J9rvv/ZKqOUfnLmss=
 			</data>
 			<key>hash2</key>
 			<data>
-			Yv0tPoci8WaBk/H7//pvVIwoW85Ab2172q0SxgB575g=
+			WvITTNymmtUq1TligTcBDrfezzU7BuwVzT731ZpG5CE=
 			</data>
 		</dict>
 		<key>Headers/SMCallServiceDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qAiVAEkfzIssQPwKq88ERPBwhQk=
+			eqV+cC6C2VkgkPNVgNpwSKCpGmg=
 			</data>
 			<key>hash2</key>
 			<data>
-			yr65G2rzz9lnZqWGjaPqDMHOtqxgXAwP8bWIRoK8BzQ=
+			HsTrVuT5iJCcwOd141FpZnkQEiiIPubRnAG6jqizOL8=
 			</data>
 		</dict>
 		<key>Headers/SMCallState.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			X5n6C7E6qSYPttceJvK7SiGocSA=
+			9/VB557631vMgC6kGBfID+X+v14=
 			</data>
 			<key>hash2</key>
 			<data>
-			rT0upAQ4PjxpKsov1CYzgOwGQnEYTe5c+zAFC7Q9Qbc=
+			uPmhvqk2hcvcqiwnFP2GpK/+DMZ2E8CCzibcVtMit1s=
 			</data>
 		</dict>
 		<key>Headers/SMCallTypes.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n9t3DGRPbG7oVspzjC+oHWIvfCs=
+			tkAQ2+GoQG74sBviU/yPrtVuaps=
 			</data>
 			<key>hash2</key>
 			<data>
-			EL6JDHMDL6sAmsAzym1gmadEcsOG8vjSAed+DSBPBs4=
+			y9KYJOapLH2z/1TG0K9wGNVusN+2cNxnAnXk7E5LCbI=
 			</data>
 		</dict>
 		<key>Headers/SMCameraModes.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Sj7W/ivbd7G9EQVEJcOfk2VMhpk=
+			Ujv4gUtqBkewFZeoNIvJ+CTTySA=
 			</data>
 			<key>hash2</key>
 			<data>
-			VA4oIg8xa5ma7dn+DvXCb27znASE0Q2bTl4RO+uG5tU=
+			mYpqlw/rfIJrG4vwIDw3uducz5XUS8rWQNAjnnBkLQc=
 			</data>
 		</dict>
 		<key>Headers/SMCodecSet.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kbTyy9i6Iq1pukbIcdaVebZSX4s=
+			ndCbsFi0EiO6XBouiLs+ap9BXF8=
 			</data>
 			<key>hash2</key>
 			<data>
-			JxA69nTRbyKgc5KSjGKFObQMYLDFB7GYHeFx5C3UPp0=
+			Z/n4VWCz/inNHmjonEjuM7OXr7DpFDPgGNB9m47o2lE=
 			</data>
 		</dict>
 		<key>Headers/SMCodecToReplace.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			g7QzMM4/jdWxSiOvOORLfRNu99I=
+			L58jO9laie8Hzd7jxF695v1d8TY=
 			</data>
 			<key>hash2</key>
 			<data>
-			FgH/WekcTKjdgtA50UdcuUUCA5iLoj91m7PHvCbj3SA=
+			C7wKOL6nV2CxZRIGaOFf4zgbLLV/iNaDWlA50W5qRQE=
 			</data>
 		</dict>
 		<key>Headers/SMCodecType.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			M9FNT0IY+6JoaEyXpgrhKjNzxz4=
+			FdduaYAH8pTkIuqOlT/08/FtB5g=
 			</data>
 			<key>hash2</key>
 			<data>
-			YwGw4d20Ta/Plri1Tk7palI751mtTM7VychUkrhPoZg=
+			dVuIyXkpMmLCzEl7RDJ7lh1IYkuH9e2rxE7hpeTvjGA=
 			</data>
 		</dict>
 		<key>Headers/SMConfiguration.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			J7DqjkQogwML2ePV607gRxpcUrg=
+			Pd8lm8LSI3zNsZ+fF5+koNEx+/E=
 			</data>
 			<key>hash2</key>
 			<data>
-			4mGXskTgcxBQxXUprEG9nH4nG5E8LOpEcXQWt4TZAyQ=
+			gpCVoCWtv7tmykUn7tZuGPDVx7an+caWE/T+HmZOzTI=
 			</data>
 		</dict>
 		<key>Headers/SMConnectionType.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UMG2cFKQv4CQuvO8DZRlCvk5bTQ=
+			LrM0OZCKXdpKP/IV0kyxaPkjDR0=
 			</data>
 			<key>hash2</key>
 			<data>
-			4qY/eqcjVV1nTXcaEbY39GwjcSIT/8ajhCUtFf+6LKQ=
+			oHG9ULzjDRfvSITXLpH7mpZmnFo2tlCKTyW1IJsm7uA=
 			</data>
 		</dict>
 		<key>Headers/SMErrorTypes.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bSmXLGQmdeNDvxXJ+O8NjYcAaWY=
+			VwDYyMjKig/zAasCoc9H1L6AKP0=
 			</data>
 			<key>hash2</key>
 			<data>
-			S6AU8BRKtv18/vSJKucF8Uz7U2opNT+160CEY01O5EQ=
+			eSvZxss5hyM0Du6n09og6VjIP/rUGFiUnjHI7dXzgjc=
 			</data>
 		</dict>
 		<key>Headers/SMICEOptions.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bO7DeuovXb1bbutBEzoQvF8AGe8=
+			MgcqCFjXhK2Ngcbyn1oDAW6/pt0=
 			</data>
 			<key>hash2</key>
 			<data>
-			peWG9gcv+OMgiM+KY4rpYr67mGYB8Gb71Bq3UwMW+XI=
+			ETEd01oY506bcmm7cynfuD3vwmy/cRQxzuAk4RLS1eA=
 			</data>
 		</dict>
 		<key>Headers/SMICEServers.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MIuxkgufzs03GXu+KB/afDK7mrg=
+			miiYg3cIWJO/+xrs2bpsEbObby0=
 			</data>
 			<key>hash2</key>
 			<data>
-			odyaPbaPJICoWiJCid9XBHla73k11SBe+FaThNDRCQ4=
+			9Vw4bg0h8IagtDWe9a1OlVpRIJUQnZ8g3OSY24eCBk0=
 			</data>
 		</dict>
 		<key>Headers/SMLogType.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7g51uUBNfz/zYlWDO5jFtJBc9RY=
+			YJH8PR6FjY73Cw89YAA/6Bgt6+8=
 			</data>
 			<key>hash2</key>
 			<data>
-			4GUf1VvGlgqwcKeclVmFlutQwKfKpiz2mR7S79UJGq8=
+			hn9+Jw85YtL7EqOeSJSpfx2JU5xZNNw5GwsVYrz9JoI=
 			</data>
 		</dict>
 		<key>Headers/SMLoggingDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wc8x895umcGJxgmGMSjjIz7ddiM=
+			EE3mboGbnsXkpj4eRDnwU/41CIo=
 			</data>
 			<key>hash2</key>
 			<data>
-			XFgoMw9ihxVTqf+z7ip99/xf+8QizHLTfQh8A0fzbys=
+			s1YFcGHxhE4MiknHYOXjKmahiNpdB4eFmPU/WFTvinA=
 			</data>
 		</dict>
 		<key>Headers/SMMediaAttributes.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9p3D9Ta5XvpIJyh/tev2F8hdNlA=
+			7tyGLvP7/B9bXaR4RL/kYrclqjI=
 			</data>
 			<key>hash2</key>
 			<data>
-			hugMSN1NaNVKTnuOXgL6goLNITaWH2qyf5EWKvNN5Mo=
+			s5mWTrAJdShWu9VxA5GJQMOsGXeL4Q0/5fYbhq77wtE=
 			</data>
 		</dict>
 		<key>Headers/SMMobileError.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qfMvSaopCWcCXDc9jgUWTa8Z9us=
+			p7NWDHdYbtHnB24dVknTStQfo5E=
 			</data>
 			<key>hash2</key>
 			<data>
-			UDrY2YQ+/Jhkb4cBCiQrsBvJOhd+TFu93SXHq1LyAs8=
+			wicQUlLRrHYD67s5mcTyK8P5HlkmAz9vLycwR1BwvXM=
 			</data>
 		</dict>
 		<key>Headers/SMOutgoingCallDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JQguCSPPNBxjCwecBZxajioDiqo=
+			JQ1w00+HRBed3bwL03Ur+lBXioE=
 			</data>
 			<key>hash2</key>
 			<data>
-			7lyblzDQjabzvYC1YRdmAjO/e14fXbn/IDmwsjxu3mA=
+			/eXy4tOF+3H644Y0kKD8F/Bw9Wd+h18CwYewFFYhvF8=
 			</data>
 		</dict>
 		<key>Headers/SMRingingFeedbackOptions.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ip3rIRudq/8NFszXq0X5Rv8zHAw=
+			U45PyhO4evWPsZkzsvjlbcmvV4M=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uu0f0sX1DXAlYJo6dPoHwJ9nvhWIEby2gG0tgSMkEFI=
+			DRYoDBoKXAuPEH+ys2IKrdMk9xlUAP9+THLUXr6nYBE=
 			</data>
 		</dict>
 		<key>Headers/SMScalingType.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n8lxV80/Ab+4hEO2W1M/G48H1Kk=
+			zpYKrjAo2U3RqvPtscKqSPwIFSs=
 			</data>
 			<key>hash2</key>
 			<data>
-			pgsclN2L/DYnUOjpS4XSi2lJr8Out6NIG+7aHIsilJI=
+			yRoKk8asd/HPSli9q9HPq1cZyOWt9U/Cc1UwQqcZCS4=
 			</data>
 		</dict>
 		<key>Headers/SMServiceProvider.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CDLcZVj35OTDF63DFN83bBZTF5I=
+			g34nNpygqSm2dsGRKlqvSJ9ir/Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			9tpF4wO1ONlmp3MQgYum4Qq7Surzd7IAVw3taZ0qy4A=
+			XBpihu/SYk+x58XaTtKwxrMcZmp1CMljw5Yj17J2+nU=
 			</data>
 		</dict>
 		<key>Headers/SMSlowStartCallPolicy.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3H/kaM146aLS/uxqJ+yMzuQTOTA=
+			6Tb6bUAppV0ceIWika1b6H9rl1s=
 			</data>
 			<key>hash2</key>
 			<data>
-			wh5LnE54fNkVP5xQi0ef3vOy73mOIRD7BRtfaLg59jw=
+			N54WwiYtyR3OlaGIx/QqzZGNMT8pZh6JXnt68TnXX90=
 			</data>
 		</dict>
 		<key>Headers/SMUriAddress.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+2ydO8DL5Uq5Lo0ffX2UIbzXOoY=
+			a2rs/QcoZF7VfHpA59rcW5FnaGQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			q13k6cy5Trl7HTvkoORG1VSZLRzyo/awy+Y2JBJdjug=
+			SE9oIxYVO1Sfp8iGzK2hLV9eCdvDlmfmjtGciOch5g0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
