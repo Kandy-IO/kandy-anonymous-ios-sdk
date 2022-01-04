@@ -5,6 +5,8 @@ Kandy Link Anonymous iOS SDK change log.
 - This project adheres to [Semantic Versioning](http://semver.org/).
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
+## 5.24.0 - 2022-03-01
+
 ## 5.23.0 - 2021-03-11
 
 ### Removed
