@@ -1,7 +1,7 @@
 # Anonymous Call Mobile SDK User Guide for iOS
 Version Number: **$SDK_VERSION$**
 <br>
-Revision Date: **March 28, 2022**
+Revision Date: **April 25, 2022**
 
 ## Anonymous Call Mobile SDK overview
 
@@ -78,6 +78,13 @@ end
 2. Go to project folder via command line and run "pod install" command and wait for cocoapods to finish installation of MobileSDK ,WebRTC frameworks and their dependencies
 
 If you have a trouble with getting latest version of **Kandy Link Anonymous iOS SDK** plaese run these suggested commands [here](https://gist.github.com/mbinna/4202236) in project directory where Podfile is located.
+
+#### Swift Package Manager Installation
+1. File >Add Package Dependency
+2. ![alt text](images/get_started_6.png "")
+3. Add https://github.com/Kandy-IO/kandy-anonymous-ios-sdk.git
+4. ![alt text](images/get_started_7.png "")
+5. Select "Branch" with "master"
 
 #### Manual Installation
 **IMPORTANT:** This installation section applies to **Kandy Link Anonymous iOS SDK** versions prior to v5.17.0. If you are using a more recent version, follow the instructions [here](?id=manual-installation-after-v5170).
