@@ -6,6 +6,8 @@ Kandy Link Anonymous iOS SDK change log.
 - This change log follows [keepachangelog.com](http://keepachangelog.com/) recommendations.
 
 ## 6.3.0 - 2022-27-05
+### Fixed
+- Reconnection of web socket when an abnormal error code occurs is fixed. `KAE-1287`
 
 ## 6.2.0 - 2022-25-04
 - Swift Package Manager support added.
