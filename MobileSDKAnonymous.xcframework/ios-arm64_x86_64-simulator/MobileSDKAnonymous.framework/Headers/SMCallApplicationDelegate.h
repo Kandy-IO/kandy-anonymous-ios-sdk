@@ -7,7 +7,7 @@
  * copied, accessed, disclosed or used in any manner, in whole or in part,
  * without GENBAND's express written authorization.
  *
- * @version: 6.5.0
+ * @version: 6.6.0
  *
  */
 
@@ -180,6 +180,36 @@ NS_ASSUME_NONNULL_BEGIN
  * @since 4.5.5
  */
 - (void) videoStopFailed:(id<SMCallDelegate>) call withError:(SMMobileError *)error;
+
+/**
+ * The method that is called when an attempt to video unMute succeeded in a call.
+ * @see [CallDelegate videoUnMute]
+ * @since 6.6.0
+ */
+- (void) videoUnMuteSucceed:(id<SMCallDelegate>) call;
+
+/**
+ * The method that is called when an attempt to video unMute fails in a call.
+ * @param error definition of failure
+ * @see [CallDelegate videoUnMute]
+ * @since 6.6.0
+ */
+- (void) videoUnMuteFailed:(id<SMCallDelegate>) call withError:(SMMobileError *)error;
+
+/**
+ * The method that is called when an attempt to video mute succeeded in a call.
+ * @see [CallDelegate videoMute]
+ * @since 6.6.0
+ */
+- (void) videoMuteSucceed:(id<SMCallDelegate>) call;
+
+/**
+ * The method that is called when an attempt to video mute fails in a call.
+ * @param error definition of failure
+ * @see [CallDelegate videoMute]
+ * @since 6.6.0
+ */
+- (void) videoMuteFailed:(id<SMCallDelegate>) call withError:(SMMobileError *)error;
 
 /**
  * Method invoked when attempt to hold a call has succeeded.
